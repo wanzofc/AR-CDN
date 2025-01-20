@@ -22,7 +22,7 @@
             background-color: #fff;
             display: flex;
             flex-direction: column;
-            height: 80vh; /* Make it taller */
+            height: 80vh;
         }
 
         .chat-area {
@@ -34,16 +34,16 @@
         }
 
         .chat-area::-webkit-scrollbar {
-            width: 5px; /* Set width of the scrollbar */
+            width: 5px;
         }
 
         .chat-area::-webkit-scrollbar-thumb {
-            background-color: #bbb; /* Set color of the scrollbar thumb */
+            background-color: #bbb;
             border-radius: 5px;
         }
 
         .chat-area::-webkit-scrollbar-track {
-            background: #f0f0f0; /* Set color of the scrollbar track */
+            background: #f0f0f0;
         }
 
         .chat-message {
@@ -103,7 +103,7 @@
       const chatArea = document.getElementById('chat-area');
       const inputField = document.getElementById('input-field');
       const sendButton = document.getElementById('send-button');
-      const API_URL = 'https://ar-cdn-production.up.railway.app/api/chatbot'; // Ganti dengan URL backend Anda
+      const API_URL = '/api/chat'; // Menggunakan relative path tanpa URL lengkap
 
         function addMessage(sender, message) {
             const messageDiv = document.createElement('div');
