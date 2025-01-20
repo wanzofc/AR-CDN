@@ -8,14 +8,14 @@
   <title>{{ title }}</title>
 
   <!-- Meta Content -->
-  <meta name="description" content="Upload and manage your files easily with AR Hosting. Enjoy a seamless file management experience.">
+  <meta name="description" content="Upload and manage your files easily with WANZOFC TECH. Enjoy a seamless file management experience.">
   <meta name="keywords" content="file upload, wanzofc tech, cloud storage, file management, online file storage, secure file upload">
   <meta name="author" content="wanzofc tech">
 
   <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="File Upload - WANZOFC TECH">
   <meta property="og:description" content="Upload and manage your files easily with AR Hosting.">
-  <meta property="og:image" content="/images/logo.jpg"> <!-- Replace with your actual OG image URL -->
+  <meta property="og:image" content="https://img99.pixhost.to/images/591/512700984_test.jpg"> <!-- Replace with your actual OG image URL -->
   <meta property="og:url" content="https://up.wanzofc.us.kg">
   <meta property="og:type" content="website">
 
@@ -23,7 +23,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="File Upload - WANZOFC TECH">
   <meta name="twitter:description" content="Upload and manage your files easily with WANZOFC TECH.">
-  <meta name="twitter:image" content="/images/logo.jpg">
+  <meta name="twitter:image" content="https://img99.pixhost.to/images/591/512700984_test.jpg">
 
   <!-- Favicon and Icons -->
   <link rel="icon" type="image/png" href="/images/favicon-48x48.png" sizes="48x48" />
