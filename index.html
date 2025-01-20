@@ -46,7 +46,6 @@
             background: #f0f0f0; /* Set color of the scrollbar track */
         }
 
-
         .chat-message {
             max-width: 70%;
             padding: 8px 12px;
@@ -93,8 +92,7 @@
 </head>
 <body>
     <div class="container">
-        <div class="chat-area" id="chat-area">
-        </div>
+        <div class="chat-area" id="chat-area"></div>
         <div class="input-area">
             <input type="text" id="input-field" placeholder="Type your message...">
             <button id="send-button">Send</button>
@@ -105,7 +103,7 @@
       const chatArea = document.getElementById('chat-area');
       const inputField = document.getElementById('input-field');
       const sendButton = document.getElementById('send-button');
-      const API_URL = 'http://localhost:3000/api/chatbot'; // Ganti dengan URL backend Anda
+      const API_URL = 'https://ar-cdn-production.up.railway.app/api/chatbot'; // Ganti dengan URL backend Anda
 
         function addMessage(sender, message) {
             const messageDiv = document.createElement('div');
@@ -124,18 +122,19 @@
                     },
                     body: JSON.stringify({ text: message })
                 });
-              if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-              }
-              const data = await response.json();
-               return data;
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                return data;
 
             } catch (error) {
                  console.error("Error sending message to backend", error);
-              throw error;
+                 throw error;
             }
         }
-
 
         sendButton.addEventListener('click', async () => {
             const userMessage = inputField.value.trim();
@@ -149,8 +148,8 @@
                  addMessage('bot', response.chatResponse);
              }
              catch(error){
-                  addMessage('bot', "Backend error");
-            }
+                  addMessage('bot', "Backend error. Please try again.");
+             }
         });
     </script>
 </body>
