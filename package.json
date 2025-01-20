@@ -1,12 +1,10 @@
 {
   "name": "ar-cdn",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "build": "tsc",
-    "build:css": " npx tailwindcss -i ./public/css/tailwind.css -o ./public/css/styles.css --watch"
-  },
+    "start": "node server.js",
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
