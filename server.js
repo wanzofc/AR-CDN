@@ -9,7 +9,7 @@ app.use(express.json()); // For parsing application/json
 
 const API_ENDPOINT = "https://api.siputzx.my.id/api/ai/naw";
 
-app.post('/api/chatbot', async (req, res) => {
+app.post('/api/chat', async (req, res) => {
     const { text } = req.body;
 
     // Validasi apakah teks ada
