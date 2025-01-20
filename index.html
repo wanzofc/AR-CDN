@@ -101,56 +101,50 @@
 
     <script>
       const chatArea = document.getElementById('chat-area');
-      const inputField = document.getElementById('input-field');
-      const sendButton = document.getElementById('send-button');
-      const API_URL = '/api/chat'; // Menggunakan relative path tanpa URL lengkap
+const inputField = document.getElementById('input-field');
+const sendButton = document.getElementById('send-button');
+const API_URL = '/api/chat'; // The backend endpoint
 
-        function addMessage(sender, message) {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', sender);
-            messageDiv.textContent = message;
-            chatArea.appendChild(messageDiv);
-            chatArea.scrollTop = chatArea.scrollHeight;
+function addMessage(sender, message) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('chat-message', sender);
+    messageDiv.textContent = message;
+    chatArea.appendChild(messageDiv);
+    chatArea.scrollTop = chatArea.scrollHeight;
+}
+
+async function sendMessageToBackend(message) {
+    try {
+        // Sending GET request with message as a query parameter
+        const response = await fetch(`${API_URL}?text=${encodeURIComponent(message)}`);
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-      async function sendMessageToBackend(message) {
-            try {
-                const response = await fetch(API_URL, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ text: message })
-                });
+        const data = await response.json();
+        return data;
 
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
+    } catch (error) {
+        console.error("Error sending message to backend", error);
+        throw error;
+    }
+}
 
-                const data = await response.json();
-                return data;
+sendButton.addEventListener('click', async () => {
+    const userMessage = inputField.value.trim();
+    inputField.value = '';
 
-            } catch (error) {
-                 console.error("Error sending message to backend", error);
-                 throw error;
-            }
-        }
+    if (!userMessage) return;
 
-        sendButton.addEventListener('click', async () => {
-            const userMessage = inputField.value.trim();
-            inputField.value = '';
-
-            if (!userMessage) return;
-
-            addMessage('user', userMessage);
-            try {
-                 const response = await sendMessageToBackend(userMessage);
-                 addMessage('bot', response.chatResponse);
-             }
-             catch(error){
-                  addMessage('bot', "Backend error. Please try again.");
-             }
-        });
+    addMessage('user', userMessage);
+    try {
+        const response = await sendMessageToBackend(userMessage);
+        addMessage('bot', response.chatResponse);
+    } catch (error) {
+        addMessage('bot', "Backend error. Please try again.");
+    }
+});
     </script>
 </body>
 </html>
