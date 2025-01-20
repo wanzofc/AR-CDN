@@ -3,26 +3,26 @@ const axios = require('axios');
 const app = express();
 const port = 3000;
 
-app.use(express.json()); // Untuk parsing JSON
-app.use(cors()); // Untuk CORS
+app.use(express.json()); // For parsing application/json
+app.use(cors()); // To handle CORS
 
-const API_ENDPOINT = "https://api.siputzx.my.id/api/ai/naw"; // Sesuaikan dengan endpoint AI Anda
+const API_ENDPOINT = "https://api.siputzx.my.id/api/ai/naw"; // Your AI endpoint
 
-// Endpoint API chatbot
-app.post('/api/chat', async (req, res) => {
-    const { text } = req.body;
+// Endpoint for chatbot
+app.get('/api/chat', async (req, res) => {
+    const { text } = req.query; // Get text from query parameters
 
     if (!text) {
         return res.status(400).json({ error: "Text is required" });
     }
 
     try {
-        // Mengirimkan request ke API eksternal untuk mendapatkan jawaban
+        // Sending request to the AI API
         const response = await axios.get(API_ENDPOINT, {
             params: { content: text },
         });
 
-        // Mengecek jika API eksternal memberikan response yang valid
+        // Checking if the response is valid
         if (response.data && response.data.status) {
             return res.json({ chatResponse: response.data.data.chatResponse });
         } else {
