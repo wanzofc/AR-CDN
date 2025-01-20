@@ -4,7 +4,7 @@
     <section id="introduction" class="mb-8">
         <h2 class="text-2xl font-semibold text-blue-300">Introduction</h2>
         <p class="text-gray-300 mt-4">
-            Welcome to the AR Hosting API documentation. This API allows you to upload files and interact with our hosting platform.
+            Welcome to the WANZOFC TECH API documentation. This API allows you to upload files and interact with our hosting platform.
         </p>
     </section>
 
@@ -78,7 +78,7 @@ const form = new FormData();
 const filePath = '/path/to/your/file.png';
 form.append("file", fs.createReadStream(filePath));
 
-fetch('https://cdn.arifzyn.tech/api/upload', {
+fetch('https://up.wanzofc.us.kg/api/upload', {
   method: 'POST',
   body: form,
   headers: form.getHeaders()
@@ -101,7 +101,7 @@ const formData = new FormData();
 const filePath = '/path/to/your/file.png';
 formData.append("file", fs.createReadStream(filePath));
 
-axios.post('https://cdn.arifzyn.tech/api/upload', formData, {
+axios.post('https://up.wanzofc.us.kg/api/upload', formData, {
   headers: {
     ...formData.getHeaders(),
   },
@@ -121,7 +121,7 @@ axios.post('https://cdn.arifzyn.tech/api/upload', formData, {
                 <div id="code-block-python" class="code-block mt-4 hidden">
                     <pre><code class="language-python">import requests
 
-url = 'https://cdn.arifzyn.tech/api/upload'
+url = 'https://up.wanzofc.us.kg/api/upload'
 files = {'file': open('/path/to/your/file.png', 'rb')}
 
 response = requests.post(url, files=files)
@@ -141,10 +141,10 @@ print(response.text)</code></pre>
   "creator": "Arifzyn.",
   "data": {
     "originalname": "1728182170206.jpg",
-    "filename": "kr5ojad2.jpg",
+    "filename": "wanzofc.jpg",
     "mimetype": "image/jpeg",
     "size": 25336,
-    "url": "https://cdn.arifzyn.tech/f/kr5ojad2.jpg"
+    "url": "https://up.wanzofc.us.kg/f/wanzofc.jpg"
   }
 }</code></pre>
                     <button class="copy-btn" onclick="copyToClipboard(this)">
