@@ -1,15 +1,21 @@
 const express = require('express');
 const axios = require('axios');
 const cors = require('cors');
+const path = require('path');
 const app = express();
 const port = 3000;
 
-app.use(express.json()); // For parsing application/json
-app.use(cors()); // To handle CORS
+app.use(express.json()); // Untuk parsing application/json
+app.use(cors()); // Untuk menangani CORS
 
-const API_ENDPOINT = "https://api.siputzx.my.id/api/ai/naw"; // Your AI endpoint
+const API_ENDPOINT = "https://api.siputzx.my.id/api/ai/naw"; // Endpoint AI
 
-// Endpoint for chatbot
+// Menyajikan file index.html
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html')); // Mengarahkan ke file index.html
+});
+
+// Endpoint untuk chatbot
 app.get('/api/chat', async (req, res) => {
     const { text } = req.query; // Mengambil teks dari query parameter
 
@@ -32,6 +38,10 @@ app.get('/api/chat', async (req, res) => {
         return res.status(500).json({ error: 'An unexpected error occurred' });
     }
 });
+
+// Menyajikan file statis jika ada (contoh: CSS, JS)
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Server listening on port
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
